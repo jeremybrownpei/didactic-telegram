@@ -29,7 +29,4 @@ function main(workbook: ExcelScript.Workbook) {
        
     sheet.getRange("B6").setValue(now.toLocaleString());
 
-    // Copy the start new instance button
-    let startNewInstanceBtn = sheet.getRange("E1").getValue();
-    sheet.getRange("E6").setValue(startNewInstanceBtn);
 }
