@@ -5,12 +5,13 @@ function main(workbook: ExcelScript.Workbook) {
 
     // Get current date time for Stars and possible ends
     let now = new Date();
+    const excelDate = (now.getTime() / (24 * 60 * 60 * 1000)) + 25569.0;
 
     // Check for un ended timer
     let activeEndCell = sheet.getRange("C6");
     if (activeEndCell.getValueTypes()[0][0] === ExcelScript.RangeValueType.empty) {
         //Set previous 
-        activeEndCell.setValue(now.toLocaleString());
+      activeEndCell.setValue(excelDate);
     }
 
     //Set current row description to main description
@@ -36,6 +37,6 @@ function main(workbook: ExcelScript.Workbook) {
     targetCellDescription.setValue(sourceCellDescription.getValue());
 
 
-    sheet.getRange("B6").setValue(now.toLocaleString());
+  sheet.getRange("B6").setValue(excelDate);
 
 }
